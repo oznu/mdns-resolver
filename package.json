@@ -1,0 +1,32 @@
+{
+  "name": "mdns-resolver",
+  "version": "0.0.1",
+  "description": "Resolve zeroconf .local domains using pure javascript.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oznu/mdns-resolver.git"
+  },
+  "keywords": [
+    "mdns",
+    "dns",
+    "resolver"
+  ],
+  "author": "oznu <dev@oz.nu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oznu/mdns-resolver/issues"
+  },
+  "homepage": "https://github.com/oznu/mdns-resolver#readme",
+  "dependencies": {
+    "multicast-dns": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.6",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
+  }
+}
