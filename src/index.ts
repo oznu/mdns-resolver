@@ -3,7 +3,7 @@
 import * as util from 'util';
 import * as MDNS from 'multicast-dns';
 
-const resolver = (hostname, rrtype, callback) => {
+const resolver = (hostname: string, rrtype: 'A'|'AAAA'|'PTR'|'TXT'|'SRV'|'HINFO', callback: Function) => {
   const mdns = MDNS();
 
   if (hostname.charAt(hostname.length - 1) === '.') {
@@ -42,5 +42,9 @@ const resolver = (hostname, rrtype, callback) => {
 };
 
 export const resolve = util.promisify(resolver);
-export const resolve4 = (hostname, callback) => resolve(hostname, 'A');
-export const resolve6 = (hostname, callback) => resolve(hostname, 'AAAA');
+export const resolve4 = (hostname: string) => resolve(hostname, 'A');
+export const resolve6 = (hostname: string) => resolve(hostname, 'AAAA');
+export const resolvePtr = (hostname: string) => resolve(hostname, 'PTR');
+export const resolveTxt = (hostname: string) => resolve(hostname, 'TXT');
+export const resolveSrv = (hostname: string) => resolve(hostname, 'SRV');
+export const resolveHinfo = (hostname: string) => resolve(hostname, 'HINFO');
