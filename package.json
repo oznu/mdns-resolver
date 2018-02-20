@@ -1,6 +1,6 @@
 {
   "name": "mdns-resolver",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Resolve zeroconf .local domains using pure javascript.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
