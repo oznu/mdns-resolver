@@ -7,7 +7,7 @@ const resolver = (hostname, rrtype, callback) => {
   const mdns = MDNS();
 
   if (hostname.charAt(hostname.length - 1) === '.') {
-    hostname = hostname.substring(0, hostname.length - 1)
+    hostname = hostname.substring(0, hostname.length - 1);
   }
 
   const timeoutHandler = setTimeout(() => {
@@ -16,7 +16,7 @@ const resolver = (hostname, rrtype, callback) => {
     mdns.removeListener('response', responseHandler);
     mdns.destroy();
 
-    callback(new Error(`Could not resolve ${hostname} - Query Timed Out`))
+    callback(new Error(`Could not resolve ${hostname} - Query Timed Out`));
   }, 3000);
 
   const retryHandler = setInterval(() => {
@@ -35,12 +35,12 @@ const resolver = (hostname, rrtype, callback) => {
 
       callback(null, answer.data);
     }
-  }
+  };
 
   mdns.on('response', responseHandler);
   mdns.query(hostname, rrtype);
-}
+};
 
 export const resolve = util.promisify(resolver);
-export const resolve4 = (hostname, callback) => resolve(hostname, 'A')
-export const resolve6 = (hostname, callback) => resolve(hostname, 'AAAA')
+export const resolve4 = (hostname, callback) => resolve(hostname, 'A');
+export const resolve6 = (hostname, callback) => resolve(hostname, 'AAAA');
