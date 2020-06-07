@@ -11,6 +11,7 @@ const resolver = (hostname: string, rrtype: 'A'|'AAAA'|'PTR'|'TXT'|'SRV'|'HINFO'
   }
 
   const timeoutHandler = setTimeout(() => {
+
     clearInterval(retryHandler);
 
     mdns.removeListener('response', responseHandler);
@@ -41,7 +42,9 @@ const resolver = (hostname: string, rrtype: 'A'|'AAAA'|'PTR'|'TXT'|'SRV'|'HINFO'
   mdns.query(hostname, rrtype);
 };
 
-export const resolve = util.promisify(resolver);
+export const resolve = util.promisify(resolver) as
+  (hostname: string, rrtype: 'A' | 'AAAA' | 'PTR' | 'TXT' | 'SRV' | 'HINFO') => Promise<string>;
+
 export const resolve4 = (hostname: string) => resolve(hostname, 'A');
 export const resolve6 = (hostname: string) => resolve(hostname, 'AAAA');
 export const resolvePtr = (hostname: string) => resolve(hostname, 'PTR');
