@@ -25,11 +25,12 @@ const resolver = (hostname: string, rrtype: 'A'|'AAAA'|'PTR'|'TXT'|'SRV'|'HINFO'
   }, 500);
 
   const responseHandler = (response) => {
-    const cname = response.answers.find(x => x.name === hostname && x.type === "CNAME");
+    const cname = response.answers.find(x => x.name === hostname && x.type === 'CNAME');
 
     if (cname) {
       hostname = cname.data;
     }
+
     const answer = response.answers.find(x => x.name === hostname && x.type === rrtype);
 
     if (answer) {
